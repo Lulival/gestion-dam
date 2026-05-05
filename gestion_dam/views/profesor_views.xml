@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ======================== -->
+    <!-- VISTA LISTA - Profesores -->
+    <!-- ======================== -->
+    <record id="view_profesor_list" model="ir.ui.view">
+        <field name="name">dam.profesor.list</field>
+        <field name="model">dam.profesor</field>
+        <field name="arch" type="xml">
+            <list string="Profesores">
+                <field name="nombre"/>
+                <field name="especialidad"/>
+                <field name="email"/>
+                <field name="telefono"/>
+                <field name="modulos_count" string="Módulos"/>
+                <field name="activo"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================= -->
+    <!-- VISTA FORMULARIO - Profesores -->
+    <!-- ============================= -->
+    <record id="view_profesor_form" model="ir.ui.view">
+        <field name="name">dam.profesor.form</field>
+        <field name="model">dam.profesor</field>
+        <field name="arch" type="xml">
+            <form string="Profesor">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="nombre" placeholder="Nombre del profesor..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Datos de contacto">
+                            <field name="email"/>
+                            <field name="telefono"/>
+                        </group>
+                        <group string="Información académica">
+                            <field name="especialidad"/>
+                            <field name="activo"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Módulos que imparte">
+                            <field name="modulo_ids">
+                                <list>
+                                    <field name="codigo"/>
+                                    <field name="nombre"/>
+                                    <field name="curso"/>
+                                    <field name="trimestre"/>
+                                    <field name="estado"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notas">
+                            <field name="notas" placeholder="Observaciones sobre el profesor..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================== -->
+    <!-- ACCIÓN - Profesores   -->
+    <!-- ===================== -->
+    <record id="action_profesor" model="ir.actions.act_window">
+        <field name="name">Profesores</field>
+        <field name="res_model">dam.profesor</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                ¡Añade tu primer profesor!
+            </p>
+        </field>
+    </record>
+
+</odoo>

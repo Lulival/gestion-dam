@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menú raíz: aparece en la barra principal de Odoo -->
+    <menuitem id="menu_gestion_dam_root"
+              name="Gestión DAM"
+              sequence="10"/>
+
+    <!-- Submenú: Módulos -->
+    <menuitem id="menu_modulo"
+              name="Módulos"
+              parent="menu_gestion_dam_root"
+              action="action_modulo"
+              sequence="10"/>
+
+    <!-- Submenú: Profesores -->
+    <menuitem id="menu_profesor"
+              name="Profesores"
+              parent="menu_gestion_dam_root"
+              action="action_profesor"
+              sequence="20"/>
+
+</odoo>

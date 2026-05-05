@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dam_modulo,access_dam_modulo,model_dam_modulo,,1,1,1,1
+access_dam_profesor,access_dam_profesor,model_dam_profesor,,1,1,1,1

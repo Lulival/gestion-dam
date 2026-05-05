@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ====================== -->
+    <!-- VISTA LISTA - Módulos  -->
+    <!-- ====================== -->
+    <record id="view_modulo_list" model="ir.ui.view">
+        <field name="name">dam.modulo.list</field>
+        <field name="model">dam.modulo</field>
+        <field name="arch" type="xml">
+            <list string="Módulos DAM" decoration-success="estado == 'superado'"
+                  decoration-danger="estado == 'no_superado'"
+                  decoration-info="estado == 'en_curso'">
+                <field name="codigo"/>
+                <field name="nombre"/>
+                <field name="curso"/>
+                <field name="trimestre"/>
+                <field name="horas"/>
+                <field name="profesor_id"/>
+                <field name="nota_final"/>
+                <field name="estado"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ========================== -->
+    <!-- VISTA FORMULARIO - Módulos -->
+    <!-- ========================== -->
+    <record id="view_modulo_form" model="ir.ui.view">
+        <field name="name">dam.modulo.form</field>
+        <field name="model">dam.modulo</field>
+        <field name="arch" type="xml">
+            <form string="Módulo DAM">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="codigo" string="Código"/>
+                        <h1>
+                            <field name="codigo" placeholder="Ej: 0484"/>
+                        </h1>
+                        <h2>
+                            <field name="nombre" placeholder="Nombre del módulo..."/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group string="Organización">
+                            <field name="curso"/>
+                            <field name="trimestre"/>
+                            <field name="horas"/>
+                        </group>
+                        <group string="Estado académico">
+                            <field name="profesor_id"/>
+                            <field name="estado"/>
+                            <field name="nota_final"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Descripción">
+                            <field name="descripcion" placeholder="Descripción del módulo, contenidos, objetivos..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ======================= -->
+    <!-- VISTA KANBAN - Módulos  -->
+    <!-- ======================= -->
+    <record id="view_modulo_kanban" model="ir.ui.view">
+        <field name="name">dam.modulo.kanban</field>
+        <field name="model">dam.modulo</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="estado" class="o_kanban_small_column">
+                <field name="nombre"/>
+                <field name="codigo"/>
+                <field name="curso"/>
+                <field name="trimestre"/>
+                <field name="profesor_id"/>
+                <field name="nota_final"/>
+                <field name="estado"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_content">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="nombre"/>
+                                    </strong>
+                                    <small class="o_kanban_record_subtitle text-muted">
+                                        <field name="codigo"/>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div>📚 Curso <field name="curso"/> — Trimestre <field name="trimestre"/></div>
+                                <div t-if="record.profesor_id.value">
+                                    👤 <field name="profesor_id"/>
+                                </div>
+                                <div t-if="record.nota_final.value">
+                                    🏆 Nota: <field name="nota_final"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ==================== -->
+    <!-- ACCIÓN - Módulos     -->
+    <!-- ==================== -->
+    <record id="action_modulo" model="ir.actions.act_window">
+        <field name="name">Módulos DAM</field>
+        <field name="res_model">dam.modulo</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                ¡Añade tu primer módulo DAM!
+            </p>
+        </field>
+    </record>
+
+</odoo>
