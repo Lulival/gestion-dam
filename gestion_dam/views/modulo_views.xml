@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+ 
     <!-- ====================== -->
     <!-- VISTA LISTA - Módulos  -->
     <!-- ====================== -->
@@ -8,7 +8,7 @@
         <field name="name">dam.modulo.list</field>
         <field name="model">dam.modulo</field>
         <field name="arch" type="xml">
-            <list string="Módulos DAM" decoration-success="estado == 'superado'"
+            <tree string="Módulos DAM" decoration-success="estado == 'superado'"
                   decoration-danger="estado == 'no_superado'"
                   decoration-info="estado == 'en_curso'">
                 <field name="codigo"/>
@@ -19,10 +19,10 @@
                 <field name="profesor_id"/>
                 <field name="nota_final"/>
                 <field name="estado"/>
-            </list>
+            </tree>
         </field>
     </record>
-
+ 
     <!-- ========================== -->
     <!-- VISTA FORMULARIO - Módulos -->
     <!-- ========================== -->
@@ -62,7 +62,7 @@
             </form>
         </field>
     </record>
-
+ 
     <!-- ======================= -->
     <!-- VISTA KANBAN - Módulos  -->
     <!-- ======================= -->
@@ -98,7 +98,7 @@
                                     👤 <field name="profesor_id"/>
                                 </div>
                                 <div t-if="record.nota_final.value">
-                                    🏆 Nota: <field name="nota_final"/>
+                                      Nota: <field name="nota_final"/>
                                 </div>
                             </div>
                         </div>
@@ -107,19 +107,19 @@
             </kanban>
         </field>
     </record>
-
+ 
     <!-- ==================== -->
     <!-- ACCIÓN - Módulos     -->
     <!-- ==================== -->
     <record id="action_modulo" model="ir.actions.act_window">
         <field name="name">Módulos DAM</field>
         <field name="res_model">dam.modulo</field>
-        <field name="view_mode">kanban,list,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 ¡Añade tu primer módulo DAM!
             </p>
         </field>
     </record>
-
+ 
 </odoo>
