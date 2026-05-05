@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+ 
     <!-- ======================== -->
     <!-- VISTA LISTA - Profesores -->
     <!-- ======================== -->
@@ -8,17 +8,17 @@
         <field name="name">dam.profesor.list</field>
         <field name="model">dam.profesor</field>
         <field name="arch" type="xml">
-            <list string="Profesores">
+            <tree string="Profesores">
                 <field name="nombre"/>
                 <field name="especialidad"/>
                 <field name="email"/>
                 <field name="telefono"/>
                 <field name="modulos_count" string="Módulos"/>
                 <field name="activo"/>
-            </list>
+            </tree>
         </field>
     </record>
-
+ 
     <!-- ============================= -->
     <!-- VISTA FORMULARIO - Profesores -->
     <!-- ============================= -->
@@ -46,13 +46,13 @@
                     <notebook>
                         <page string="Módulos que imparte">
                             <field name="modulo_ids">
-                                <list>
+                                <tree>
                                     <field name="codigo"/>
                                     <field name="nombre"/>
                                     <field name="curso"/>
                                     <field name="trimestre"/>
                                     <field name="estado"/>
-                                </list>
+                                </tree>
                             </field>
                         </page>
                         <page string="Notas">
@@ -63,19 +63,19 @@
             </form>
         </field>
     </record>
-
+ 
     <!-- ===================== -->
     <!-- ACCIÓN - Profesores   -->
     <!-- ===================== -->
     <record id="action_profesor" model="ir.actions.act_window">
         <field name="name">Profesores</field>
         <field name="res_model">dam.profesor</field>
-        <field name="view_mode">list,form</field>
+        <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 ¡Añade tu primer profesor!
             </p>
         </field>
     </record>
-
+ 
 </odoo>
