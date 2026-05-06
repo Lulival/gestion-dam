@@ -70,7 +70,7 @@
         <field name="name">dam.modulo.kanban</field>
         <field name="model">dam.modulo</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="estado" class="o_kanban_small_column">
+            <kanban default_group_by="estado">
                 <field name="nombre"/>
                 <field name="codigo"/>
                 <field name="curso"/>
@@ -78,28 +78,15 @@
                 <field name="profesor_id"/>
                 <field name="nota_final"/>
                 <field name="estado"/>
-                <field name="color"/>
                 <templates>
-                    <t t-name="card">
-                        <div class="oe_kanban_content">
-                            <div class="o_kanban_record_top">
-                                <div class="o_kanban_record_headings">
-                                    <strong class="o_kanban_record_title">
-                                        <field name="nombre"/>
-                                    </strong>
-                                    <small class="o_kanban_record_subtitle text-muted">
-                                        <field name="codigo"/>
-                                    </small>
-                                </div>
-                            </div>
-                            <div class="o_kanban_record_body">
-                                <div>📚 Curso <field name="curso"/> — Trimestre <field name="trimestre"/></div>
-                                <div t-if="record.profesor_id.value">
-                                    👤 <field name="profesor_id"/>
-                                </div>
-                                <div t-if="record.nota_final.value">
-                                      Nota: <field name="nota_final"/>
-                                </div>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="oe_kanban_content">
+                                <strong><field name="nombre"/></strong>
+                                <div class="text-muted"><field name="codigo"/></div>
+                                <div>Curso: <field name="curso"/> | Trimestre: <field name="trimestre"/></div>
+                                <div>Profesor: <field name="profesor_id"/></div>
+                                <div>Nota: <field name="nota_final"/></div>
                             </div>
                         </div>
                     </t>
